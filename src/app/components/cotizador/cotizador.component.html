@@ -1,0 +1,156 @@
+<div class="container-cotizador">
+    <div class="row">
+        <ng-container *ngIf="!cotizadorWindow else cotizador">
+            <div class="card card-register">
+                <form class="register-form">
+                    <!-- Nombre -->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon  nc-circle-10"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Nombre*">
+                    </div>
+                    <!-- Edad -->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon nc-badge"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Edad*">
+                    </div>
+                    <!-- Estado-->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon nc-map-big"></i>
+                            </span>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="Estado">
+                    </div>
+                    <!-- Sexo-->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon nc-single-copy-04"></i>
+                            </span>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="Sexo">
+                    </div>
+                    <!-- MAIL-->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon nc-email-85"></i>
+                            </span>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <!-- TELEFONO -->
+                    <div class="input-group form-group-no-border">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="nc-icon nc-mobile"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Telefóno">
+                    </div>
+                    <button class="btn btn-block btn-round" (click)="sendUser()">COTIZAR GRATIS</button>
+                </form>
+            </div>
+        </ng-container>
+
+        <ng-template #cotizador>
+            <div class="card card-cotizador">
+                <form class="register-form">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="input-group form-group-no-border">
+                                <select class="form-control" name="" id="">
+                                    <option value="0">BÁSICA</option>
+                                    <option value="1">ESTÁNDAR</option>
+                                    <option value="2">PREMIUM</option>
+                                    <option value="3">TODAS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="input-group form-group-no-border">
+                                <select class="form-control" name="" id="">
+                                    <option value="0">MENSUAL</option>
+                                    <option value="1">TRIMESTRAL</option>
+                                    <option value="2">SEMESTRAL</option>
+                                    <option value="3">ANUAL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-round" (click)="sendUser()">BUSCAR</button>
+                        </div>
+                    </div>
+                    <div class="container-items">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img class="AXA_logo"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKc41Sr6gRiBvkXIi0PJAvtT_xljGa9WpqGg&usqp=CAU">
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Precio</h6>
+                                    <p>$4,739 / Anual*</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Suma Asegurada</h6>
+                                    <p>$500,000 MXN</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>Deducible</h6>
+                                    <p>$14,000 MXN</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h6 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h6>
+                                </div>
+                            </div>
+                            <ng-container *ngIf="mostrarMasInformacion">
+                                <div class="container-see-more">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            Hospitales incluidos
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ol>
+                                                <li>Hospital 1</li>
+                                                <li>Hospital 2</li>
+                                                <li>Hospital 3</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            Cobertura incluidas
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ol>
+                                                <li>Gastos hospitalarios</li>
+                                                <li>Honorarios médicos</li>
+                                                <li>Analisis de laboratorio</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+
+    </div>
+</div>

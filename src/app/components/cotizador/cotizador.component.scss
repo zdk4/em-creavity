@@ -1,5 +1,5 @@
 .container-cotizador {
-    background: linear-gradient(to bottom right, rgb(126, 175, 76), white);
+    background: linear-gradient(to bottom right, #adc793, white);
     padding-top: 100px;
 }
 
@@ -38,13 +38,36 @@
           -webkit-box-shadow: -2px 2px 12px -4px rgba(0,0,0,0.75);
           -moz-box-shadow: -2px 2px 12px -4px rgba(0,0,0,0.75);
           box-shadow: -2px 2px 12px -4px rgba(0,0,0,0.75);
-          h5, h6, p {
-              color: rgb(107, 102, 102);
-          }
-
           .see-more {
             text-align: center;
             cursor: pointer;
           }
       }
   }
+
+  .contaianer-button {
+    .col-md-12 {
+      padding: 3px 0px;
+    }
+  }
+
+  h5, h6, p {
+    color: rgb(107, 102, 102);
+}
+
+.blue_btn {
+  background-color: #F1F9FF;
+  color: #3a961b;
+  padding: 1px;
+  min-width: 66px;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: none;
+  width: 100%;
+  height: 34px;
+}
+
+.control_button_pressed {
+  background-color: #3a961b !important;
+  color: #FFFFFF !important;
+}

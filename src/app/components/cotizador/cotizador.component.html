@@ -2,7 +2,7 @@
     <div class="row">
         <ng-container *ngIf="!cotizadorWindow else cotizador">
             <div class="card card-register">
-                <form class="register-form">
+                <form class="register-form" [formGroup]="registro">
                     <!-- Nombre -->
                     <div class="input-group form-group-no-border">
                         <div class="input-group-prepend">
@@ -10,7 +10,7 @@
                                 <i class="nc-icon  nc-circle-10"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nombre*">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
                     </div>
                     <!-- Edad -->
                     <div class="input-group form-group-no-border">
@@ -19,7 +19,7 @@
                                 <i class="nc-icon nc-badge"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Edad*">
+                        <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
                     </div>
                     <!-- Estado-->
                     <div class="input-group form-group-no-border">
@@ -29,7 +29,7 @@
                             </span>
                         </div>
 
-                        <input type="text" class="form-control" placeholder="Estado">
+                        <input type="text" class="form-control" placeholder="Estado" formControlName="estado">
                     </div>
                     <!-- Sexo-->
                     <div class="input-group form-group-no-border">
@@ -39,7 +39,7 @@
                             </span>
                         </div>
 
-                        <input type="text" class="form-control" placeholder="Sexo">
+                        <input type="text" class="form-control" placeholder="Sexo" formControlName="sexo">
                     </div>
                     <!-- MAIL-->
                     <div class="input-group form-group-no-border">
@@ -49,7 +49,7 @@
                             </span>
                         </div>
 
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Email" formControlName="mail">
                     </div>
                     <!-- TELEFONO -->
                     <div class="input-group form-group-no-border">
@@ -58,7 +58,7 @@
                                 <i class="nc-icon nc-mobile"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Telefóno">
+                        <input type="text" class="form-control" placeholder="Telefóno" formControlName="tellefono">
                     </div>
                     <button class="btn btn-block btn-round" (click)="sendUser()">COTIZAR GRATIS</button>
                 </form>
@@ -69,6 +69,20 @@
             <div class="card card-cotizador">
                 <form class="register-form">
                     <div class="row">
+                        <div class="col-md-3">
+                            <h6>Tus datos: </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>13 años </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>Hombre</h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>Ciudad de México</h6>
+                        </div>
+                    </div>
+                    <div class="row">
                         <!-- Button -->
                         <div class="col-md-4">
                             <div class="row contaianer-button align-items-center">
@@ -76,16 +90,16 @@
                                     <h6>Nivel de Cobertura</h6>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">BÁSICA</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.basica}" (click)="cambioCobertura('basica')">BÁSICA</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">ESTÁNDAR</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.estandar}" (click)="cambioCobertura('estandar')">ESTÁNDAR</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">PREMIUM</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.premium}" (click)="cambioCobertura('premium')">PREMIUM</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">TODAS</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.todas}" (click)="cambioCobertura('todas')">TODAS</button>
                                 </div>
                             </div>
                             <div class="row contaianer-button">
@@ -93,16 +107,16 @@
                                     <h6>Forma de Pago</h6>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">MENSUAL</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.mensual}" (click)="cambioFormaPago('mensual')">MENSUAL</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">TRIMESTRAL</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.trimestral}" (click)="cambioFormaPago('trimestral')">TRIMESTRAL</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">SEMESTRAL</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.semestral}" (click)="cambioFormaPago('semestral')">SEMESTRAL</button>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn">ANUAL</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.anual}" (click)="cambioFormaPago('anual')">ANUAL</button>
                                 </div>
                             </div>
                         </div>

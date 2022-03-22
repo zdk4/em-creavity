@@ -23,15 +23,17 @@
 
   .container-items {
     width: 100%;
-    max-height: 450px;
-    overflow: auto;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     color: black;
       .item {
           width: 80%;
-          max-height: 250px;
-          overflow: auto;
+          max-height: 400px;
+          overflow-y: auto;
+          overflow-x: hidden;
           border: solid 1px #83af83;
           border-radius: 11px;
           padding: 23px 12px;

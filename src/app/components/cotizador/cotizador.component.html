@@ -28,8 +28,10 @@
                                 <i class="nc-icon nc-map-big"></i>
                             </span>
                         </div>
-
-                        <input type="text" class="form-control" placeholder="Estado" formControlName="estado">
+                        <select name="" class="form-control" formControlName="estado">
+                            <option value="">Estado</option>
+                            <option value="{{item.clave}}" *ngFor="let item of estados">{{item.nombre}}</option>
+                        </select>
                     </div>
                     <!-- Sexo-->
                     <div class="input-group form-group-no-border">
@@ -38,8 +40,11 @@
                                 <i class="nc-icon nc-single-copy-04"></i>
                             </span>
                         </div>
-
-                        <input type="text" class="form-control" placeholder="Sexo" formControlName="sexo">
+                        <select name="" class="form-control" formControlName="sexo">
+                            <option value="">Sexo</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
                     </div>
                     <!-- MAIL-->
                     <div class="input-group form-group-no-border">
@@ -60,7 +65,7 @@
                         </div>
                         <input type="text" class="form-control" placeholder="Telefóno" formControlName="tellefono">
                     </div>
-                    <button class="btn btn-block btn-round" (click)="sendUser()">COTIZAR GRATIS</button>
+                    <button class="btn btn-block btn-round" [disabled]="registro.invalid" (click)="sendUser()">COTIZAR GRATIS</button>
                 </form>
             </div>
         </ng-container>
@@ -73,13 +78,40 @@
                             <h6>Tus datos: </h6>
                         </div>
                         <div class="col-md-2">
-                            <h6>13 años </h6>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span class="input-group-text">
+                                        <i class="nc-icon nc-badge"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <h6>{{registro.value.edad}} </h6>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-2">
-                            <h6>Hombre</h6>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span class="input-group-text">
+                                        <i class="nc-icon nc-single-copy-04"></i>
+                                    </span>
+                                </div>
+                                <div class="col-md-7">
+                                    <h6>{{registro.value.nombre}}</h6>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-2">
-                            <h6>Ciudad de México</h6>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-map-big"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-7">
+                                <h6>{{registro.value.estado}}</h6>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     <div class="row">

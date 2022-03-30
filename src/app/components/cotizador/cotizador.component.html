@@ -19,7 +19,8 @@
                                 <i class="nc-icon nc-badge"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
+                        <input type="text" class="form-control" placeholder="Edad" formControlName="edad"
+                        (keypress)="isInputNumber($event)" maxlength="2">
                     </div>
                     <!-- Estado-->
                     <div class="input-group form-group-no-border">
@@ -30,7 +31,7 @@
                         </div>
                         <select name="" class="form-control" formControlName="estado">
                             <option value="">Estado</option>
-                            <option value="{{item.clave}}" *ngFor="let item of estados">{{item.nombre}}</option>
+                            <option value="{{item.nombre}}" *ngFor="let item of estados">{{item.nombre}}</option>
                         </select>
                     </div>
                     <!-- Sexo-->
@@ -63,7 +64,8 @@
                                 <i class="nc-icon nc-mobile"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Telefóno" formControlName="tellefono">
+                        <input type="text" class="form-control" placeholder="Telefóno" formControlName="tellefono"
+                        (keypress)="isInputNumber($event)">
                     </div>
                     <button class="btn btn-block btn-round" [disabled]="registro.invalid" (click)="sendUser()">COTIZAR GRATIS</button>
                 </form>
@@ -73,42 +75,42 @@
         <ng-template #cotizador>
             <div class="card card-cotizador">
                 <form class="register-form">
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 27px;">
                         <div class="col-md-3">
                             <h6>Tus datos: </h6>
                         </div>
                         <div class="col-md-2">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4 center-element">
                                     <span class="input-group-text">
                                         <i class="nc-icon nc-badge"></i>
                                     </span>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-5 center-element">
                                     <h6>{{registro.value.edad}} </h6>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4 center-element">
                                     <span class="input-group-text">
                                         <i class="nc-icon nc-single-copy-04"></i>
                                     </span>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-5 center-element">
                                     <h6>{{registro.value.nombre}}</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4 center-element">
                                 <span class="input-group-text">
                                     <i class="nc-icon nc-map-big"></i>
                                 </span>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-5 center-element">
                                 <h6>{{registro.value.estado}}</h6>
                             </div>
                         </div>
@@ -152,7 +154,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-sm-12">
                             <div class="container-items">
                                 <div class="item">
                                     <div class="row">

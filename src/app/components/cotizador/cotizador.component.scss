@@ -1,6 +1,8 @@
 .container-cotizador {
   background: linear-gradient(to bottom right, #adc793, white);
   padding-top: 100px;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 .row {
@@ -35,18 +37,20 @@
 
 .container-items {
   width: 100%;
-  max-height: 600px;
+  max-height: 350px;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   color: black;
 
   .item {
     width: 80%;
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    max-height: 500px;
+    margin-top: 25px;
+    // overflow-y: auto;
+    // overflow-x: hidden;
     border: solid 1px #83af83;
     border-radius: 11px;
     padding: 23px 12px;
@@ -94,6 +98,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  h6 {
+    margin: 0;
+  }
+
+  .col-data {
+    padding: 0;
+  }
 }
 
 @media(max-width:767px) {
@@ -120,3 +131,16 @@ p {
     }
   }
 }
+
+.error {
+  border: 1px solid red !important;
+}
+
+.colCenter {
+  align-items: center;
+    display: flex;
+}
+
+// .logo_empresa {
+
+// }

@@ -1,5 +1,7 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CotizadorServiceService } from './cotizador-service.service';
 
 @Component({
   selector: 'app-cotizador',
@@ -8,11 +10,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CotizadorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cotizadorService: CotizadorServiceService) { }
   public cotizadorWindow = false;
   public mostrarMasInformacion = false;
   public nivelCobertura = {
-    basica: false,
+    basico: false,
     estandar: false,
     premium: false,
     todas: false,
@@ -24,66 +26,69 @@ export class CotizadorComponent implements OnInit {
     semestral: false,
     anual: false,
   };
-
-  public registro = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    edad: new FormControl('', Validators.required),
-    estado: new FormControl('', Validators.required),
-    sexo: new FormControl('', Validators.required),
-    mail: new FormControl('', Validators.email),
-    tellefono: new FormControl('', Validators.required),
-  });
+  public precios = [];
+  public itemFiltrado = [];
+  public registro = null;
 
   public estados = [
-    { clave: "AGS", nombre: "AGUASCALIENTES" },
-    { clave: "BC",  nombre: "BAJA CALIFORNIA" },
-    { clave: "BCS", nombre: "BAJA CALIFORNIA SUR" },
-    { clave: "CHI", nombre: "CHIHUAHUA" },
-    { clave: "CHS", nombre: "CHIAPAS" },
-    { clave: "CMP", nombre: "CAMPECHE" },
-    { clave: "CMX", nombre: "CIUDAD DE MEXICO" },
-    { clave: "COA", nombre: "COAHUILA" },
-    { clave: "COL", nombre: "COLIMA" },
-    { clave: "DGO", nombre: "DURANGO" },
-    { clave: "GRO", nombre: "GUERRERO" },
-    { clave: "GTO", nombre: "GUANAJUATO" },
-    { clave: "HGO", nombre: "HIDALGO" },
-    { clave: "JAL", nombre: "JALISCO" },
-    { clave: "MCH", nombre: "MICHOACAN" },
-    { clave: "MEX", nombre: "ESTADO DE MEXICO" },
-    { clave: "MOR", nombre: "MORELOS" },
-    { clave: "NAY", nombre: "NAYARIT" },
-    { clave: "NL",  nombre: "NUEVO LEON" },
-    { clave: "OAX", nombre: "OAXACA" },
-    { clave: "PUE", nombre: "PUEBLA" },
-    { clave: "QR",  nombre: "QUINTANA ROO" },
-    { clave: "QRO", nombre: "QUERETARO" },
-    { clave: "SIN", nombre: "SINALOA" },
-    { clave: "SLP", nombre: "SAN LUIS POTOSI" },
-    { clave: "SON", nombre: "SONORA" },
-    { clave: "TAB", nombre: "TABASCO" },
-    { clave: "TLX", nombre: "TLAXCALA" },
-    { clave: "TMS", nombre: "TAMAULIPAS" },
-    { clave: "VER", nombre: "VERACRUZ" },
-    { clave: "YUC", nombre: "YUCATAN" },
-    { clave: "ZAC", nombre: "ZACATECAS" } 
-];
+    { clave: "AGUASCALIENTES", nombre: "AGUASCALIENTES" },
+    { clave: "BAJA CALIFORNIA", nombre: "BAJA CALIFORNIA" },
+    { clave: "BAJA CALIFORNIA SUR", nombre: "BAJA CALIFORNIA SUR" },
+    { clave: "CHIHUAHUA", nombre: "CHIHUAHUA" },
+    { clave: "CHIAPAS", nombre: "CHIAPAS" },
+    { clave: "CAMPECHE", nombre: "CAMPECHE" },
+    { clave: "CIUDAD DE MEXICO", nombre: "CIUDAD DE MEXICO" },
+    { clave: "COAHUILA", nombre: "COAHUILA" },
+    { clave: "COLIMA", nombre: "COLIMA" },
+    { clave: "DURANGO", nombre: "DURANGO" },
+    { clave: "GUERRERO", nombre: "GUERRERO" },
+    { clave: "GUANAJUATO", nombre: "GUANAJUATO" },
+    { clave: "HIDALGO", nombre: "HIDALGO" },
+    { clave: "JALISCO", nombre: "JALISCO" },
+    { clave: "MICHOACAN", nombre: "MICHOACAN" },
+    { clave: "ESTADO DE MEXICO", nombre: "ESTADO DE MEXICO" },
+    { clave: "MORELOS", nombre: "MORELOS" },
+    { clave: "NAYARIT", nombre: "NAYARIT" },
+    { clave: "NUEVO LEON", nombre: "NUEVO LEON" },
+    { clave: "OAXACA", nombre: "OAXACA" },
+    { clave: "PUEBLA", nombre: "PUEBLA" },
+    { clave: "QUINTANA ROO", nombre: "QUINTANA ROO" },
+    { clave: "QUERETARO", nombre: "QUERETARO" },
+    { clave: "SINALOA", nombre: "SINALOA" },
+    { clave: "SAN LUIS POTOSI", nombre: "SAN LUIS POTOSI" },
+    { clave: "SONORA", nombre: "SONORA" },
+    { clave: "TABASCO", nombre: "TABASCO" },
+    { clave: "TLAXCALA", nombre: "TLAXCALA" },
+    { clave: "TAMAULIPAS", nombre: "TAMAULIPAS" },
+    { clave: "VERACRUZ", nombre: "VERACRUZ" },
+    { clave: "YUCATAN", nombre: "YUCATAN" },
+    { clave: "ZACATECAS", nombre: "ZACATECAS" }
+  ];
   ngOnInit(): void {
+    this.registro = new FormGroup({
+      full_name: new FormControl('', Validators.required),
+      age: new FormControl(Validators.min(0), Validators.max(64)),
+      state: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.email),
+      phone: new FormControl('', Validators.required),
+    });
   }
 
-  sendUser() {
-    this.cotizadorWindow = true;
-  }
-  
   cambioCobertura(cobertura: string) {
+    this.itemFiltrado = [];
     this.nivelCobertura = {
-      basica: false,
+      basico: false,
       estandar: false,
       premium: false,
       todas: false,
     };
-
     this.nivelCobertura[cobertura] = true;
+    if ( this.nivelCobertura.todas) {
+      this.itemFiltrado = this.precios;
+    } else {
+      this.itemFiltrado = this.precios.filter(item => item.level === cobertura.toUpperCase());
+    }    
   }
 
   cambioFormaPago(pago: string) {
@@ -103,5 +108,17 @@ export class CotizadorComponent implements OnInit {
     if (!(/[0-9]/.test(ch))) {
       evt.preventDefault();
     }
+  }
+
+  getCotizaciones() {
+    this.cotizadorService.getCotizaciones(this.registro.value).toPromise().then(arg => {
+      this.precios = arg.data
+      this.precios.forEach(element => {
+        element.hospitals = element.hospitals.split(',');
+        // element.price = Number(element.price),
+        // element.deductible = Number(element.deductible)
+      });
+      this.cotizadorWindow = true;
+    });
   }
 }

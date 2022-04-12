@@ -10,7 +10,7 @@
                                 <i class="nc-icon  nc-circle-10"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="full_name" [ngClass]="{'error': registro.controls.full_name.invalid }"> 
                     </div>
                     <!-- Edad -->
                     <div class="input-group form-group-no-border">
@@ -19,8 +19,11 @@
                                 <i class="nc-icon nc-badge"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Edad" formControlName="edad"
-                        (keypress)="isInputNumber($event)" maxlength="2">
+                        <input type="number" class="form-control" placeholder="Edad" formControlName="age" [ngClass]="{'error': registro.controls.age.invalid }"
+                        (keypress)="isInputNumber($event)" min="0" max="65">
+                        <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
+                            <p >Edad máxima 65 años</p>
+                        </div> -->
                     </div>
                     <!-- Estado-->
                     <div class="input-group form-group-no-border">
@@ -29,7 +32,7 @@
                                 <i class="nc-icon nc-map-big"></i>
                             </span>
                         </div>
-                        <select name="" class="form-control" formControlName="estado">
+                        <select name="" class="form-control" formControlName="state" [ngClass]="{'error': registro.controls.state.invalid }">
                             <option value="">Estado</option>
                             <option value="{{item.nombre}}" *ngFor="let item of estados">{{item.nombre}}</option>
                         </select>
@@ -41,7 +44,7 @@
                                 <i class="nc-icon nc-single-copy-04"></i>
                             </span>
                         </div>
-                        <select name="" class="form-control" formControlName="sexo">
+                        <select name="" class="form-control" formControlName="gender" [ngClass]="{'error': registro.controls.gender.invalid }">
                             <option value="">Sexo</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
@@ -55,7 +58,8 @@
                             </span>
                         </div>
 
-                        <input type="text" class="form-control" placeholder="Email" formControlName="mail">
+                        <input type="text" [ngClass]="{'error': registro.controls.email.invalid }" 
+                        class="form-control" placeholder="Email" formControlName="email">
                     </div>
                     <!-- TELEFONO -->
                     <div class="input-group form-group-no-border">
@@ -64,10 +68,10 @@
                                 <i class="nc-icon nc-mobile"></i>
                             </span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Telefóno" formControlName="tellefono"
+                        <input type="text" [ngClass]="{'error': registro.controls.phone.invalid }" class="form-control" placeholder="Telefóno" formControlName="phone"
                         (keypress)="isInputNumber($event)">
-                    </div>
-                    <button class="btn btn-block btn-round" [disabled]="registro.invalid" (click)="sendUser()">COTIZAR GRATIS</button>
+                    </div>                   
+                    <button class="btn btn-block btn-round" [disabled]="registro.invalid" (click)="getCotizaciones()">COTIZAR GRATIS</button>
                 </form>
             </div>
         </ng-container>
@@ -76,7 +80,7 @@
             <div class="card card-cotizador">
                 <form class="register-form">
                     <div class="row" style="margin-bottom: 27px;">
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <h6>Tus datos: </h6>
                         </div>
                         <div class="col-md-2">
@@ -86,32 +90,32 @@
                                         <i class="nc-icon nc-badge"></i>
                                     </span>
                                 </div>
-                                <div class="col-md-5 center-element">
-                                    <h6>{{registro.value.edad}} </h6>
+                                <div class="col-md-5 center-element col-data">
+                                    <h6>{{registro.value.age}} </h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="row">
                                 <div class="col-md-4 center-element">
                                     <span class="input-group-text">
                                         <i class="nc-icon nc-single-copy-04"></i>
                                     </span>
                                 </div>
-                                <div class="col-md-5 center-element">
-                                    <h6>{{registro.value.nombre}}</h6>
+                                <div class="col-md-5 center-element col-data">
+                                    <h6>{{registro.value.full_name}}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                         <div class="row">
                             <div class="col-md-4 center-element">
                                 <span class="input-group-text">
                                     <i class="nc-icon nc-map-big"></i>
                                 </span>
                             </div>
-                            <div class="col-md-5 center-element">
-                                <h6>{{registro.value.estado}}</h6>
+                            <div class="col-md-5 center-element col-data">
+                                <h6>{{registro.value.state}}</h6>
                             </div>
                         </div>
                         </div>
@@ -121,10 +125,10 @@
                         <div class="col-md-4">
                             <div class="row contaianer-button align-items-center">
                                 <div class="col-md-12">
-                                    <h6>Nivel de Cobertura</h6>
+                                    <h6 style="text-align: center;">Nivel de Cobertura</h6>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.basica}" (click)="cambioCobertura('basica')">BÁSICA</button>
+                                    <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.basica}" (click)="cambioCobertura('basico')">BÁSICA</button>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.estandar}" (click)="cambioCobertura('estandar')">ESTÁNDAR</button>
@@ -136,7 +140,7 @@
                                     <button class="blue_btn" [ngClass]="{'control_button_pressed': nivelCobertura.todas}" (click)="cambioCobertura('todas')">TODAS</button>
                                 </div>
                             </div>
-                            <div class="row contaianer-button">
+                            <!-- <div class="row contaianer-button">
                                 <div class="col-md-12">
                                     <h6>Forma de Pago</h6>
                                 </div>
@@ -152,63 +156,65 @@
                                 <div class="col-md-12">
                                     <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.anual}" (click)="cambioFormaPago('anual')">ANUAL</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div class="container-items">
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <img class="AXA_logo"
-                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKc41Sr6gRiBvkXIi0PJAvtT_xljGa9WpqGg&usqp=CAU">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <h6>Precio</h6>
-                                            <p>$4,739 / Anual*</p>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <h6>Suma Asegurada</h6>
-                                            <p>$500,000 MXN</p>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <h6>Deducible</h6>
-                                            <p>$14,000 MXN</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
+                                <ng-container *ngIf="itemFiltrado.length > 0">
+                                    <div class="item"  *ngFor="let item of itemFiltrado">
                                         <div class="col-md-12">
-                                            <h6 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h6>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="logo_empresa" *ngIf="item.company === 'AXA'" src="assets/img/logo_axa.jpg">
+                                                    <img class="logo_empresa" *ngIf="item.company === 'MAPFRE'" src="assets/img/logo_mapre.jpg">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h6>Precio</h6>
+                                                    <p>${{item.price}} MXN</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h6>Deducible</h6>
+                                                    <p>${{item.deductible}} MXN</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h6>Memembresía</h6>
+                                                    <p>{{item.membership}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- <h6 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h6> -->
+                                                </div>
+                                            </div>
+                                            <ng-container>
+                                                <div class="container-see-more">
+                                                    <div class="row">
+                                                        <div class="col-md-3 colCenter">
+                                                            <h6>Hospitales incluidos</h6>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <ol>
+                                                                <li *ngFor="let hospital of item.hospitals">{{hospital}}</li>
+                                                            </ol>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="row">
+                                                        <div class="col-md-3">
+                                                            Cobertura incluidas
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <ol>
+                                                                <li>Gastos hospitalarios</li>
+                                                                <li>Honorarios médicos</li>
+                                                                <li>Analisis de laboratorio</li>
+                                                            </ol>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </ng-container>
                                         </div>
                                     </div>
-                                    <ng-container *ngIf="mostrarMasInformacion">
-                                        <div class="container-see-more">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    Hospitales incluidos
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <ol>
-                                                        <li>Hospital 1</li>
-                                                        <li>Hospital 2</li>
-                                                        <li>Hospital 3</li>
-                                                    </ol>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    Cobertura incluidas
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <ol>
-                                                        <li>Gastos hospitalarios</li>
-                                                        <li>Honorarios médicos</li>
-                                                        <li>Analisis de laboratorio</li>
-                                                    </ol>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                </div>
+                                </ng-container>
                             </div>
                         </div>
                     </div>

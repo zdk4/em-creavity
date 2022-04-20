@@ -1,216 +1,81 @@
 <div class="container-cotizador">
   <div class="row">
-    <ng-container *ngIf="!cotizadorWindow; else cotizador">
-      <div class="card card-register">
-        <form class="register-form" [formGroup]="registro">
-          <!-- Nombre -->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-circle-10"></i>
-              </span>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nombre"
-              formControlName="full_name"
-              [ngClass]="{ error: registro.controls.full_name.invalid }"
-            />
-          </div>
-          <!-- Edad -->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-badge"></i>
-              </span>
-            </div>
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Edad"
-              formControlName="age"
-              [ngClass]="{ error: registro.controls.age.invalid }"
-              (keypress)="isInputNumber($event)"
-              min="0"
-              max="65"
-            />
-            <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
-                            <p >Edad máxima 65 años</p>
-                        </div> -->
-          </div>
-          <!-- Estado-->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-map-big"></i>
-              </span>
-            </div>
-            <select
-              name=""
-              class="form-control"
-              formControlName="state"
-              [ngClass]="{ error: registro.controls.state.invalid }"
-            >
-              <option value="">Estado</option>
-              <option value="{{ item.nombre }}" *ngFor="let item of estados">
-                {{ item.nombre }}
-              </option>
-            </select>
-          </div>
-          <!-- Sexo-->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-single-copy-04"></i>
-              </span>
-            </div>
-            <select
-              name=""
-              class="form-control"
-              formControlName="gender"
-              [ngClass]="{ error: registro.controls.gender.invalid }"
-            >
-              <option value="">Sexo</option>
-              <option value="H">Masculino</option>
-              <option value="M">Femenino</option>
-            </select>
-          </div>
-          <!-- MAIL-->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-email-85"></i>
-              </span>
-            </div>
-
-            <input
-              type="text"
-              [ngClass]="{ error: registro.controls.email.invalid }"
-              class="form-control"
-              placeholder="Email"
-              formControlName="email"
-            />
-          </div>
-          <!-- TELEFONO -->
-          <div class="input-group form-group-no-border">
-            <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="nc-icon nc-mobile"></i>
-              </span>
-            </div>
-            <input
-              type="text"
-              [ngClass]="{ error: registro.controls.phone.invalid }"
-              class="form-control"
-              placeholder="Telefóno"
-              formControlName="phone"
-              (keypress)="isInputNumber($event)"
-            />
-          </div>
-          <button
-            class="btn btn-block btn-round"
-            [disabled]="registro.invalid"
-            (click)="getCotizaciones()"
-          >
-            COTIZAR GRATIS
-          </button>
-        </form>
-      </div>
-    </ng-container>
-
-    <ng-template #cotizador>
-      <div class="card card-cotizador">
-        <form class="register-form">
-          <div class="row" style="margin-bottom: 27px">
-            <div class="col-md-4">
-              <div class="row">
-                <div class="col-md-1 center-element">
-                  <span class="input-group-text">
-                    <i class="nc-icon nc-single-copy-04"></i>
-                  </span>
-                </div>
-                <div class="col-md-9 center-element col-data" style="justify-content: flex-start">
-                  <h6>Nombre: <span class="datoH6">{{ registro.value.full_name }}</span></h6>
-                </div>
+    <div class="card card-cotizador">
+      <form class="register-form">
+        <div class="row" style="margin-bottom: 27px">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-1 center-element">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-single-copy-04"></i>
+                </span>
               </div>
-            </div>
-            <div class="col-md-5">
-                <div class="row">
-                  <div class="col-md-1 center-element">
-                    <span class="input-group-text">
-                      <i class="nc-icon nc-map-big"></i>
-                    </span>
-                  </div>
-                  <div class="col-md-8 center-element col-data" style="justify-content: flex-start">
-                    <h6>Estado: <span class="datoH6">{{ registro.value.state }}</span></h6>
-                  </div>
-                </div>
-              </div>
-            <div class="col-md-3">
-              <div class="row">
-                <div class="col-md-1 center-element">
-                  <span class="input-group-text">
-                    <i class="nc-icon nc-badge"></i>
-                  </span>
-                </div>
-                <div class="col-md-5 center-element col-data" style="justify-content: flex-start">
-                  <h6>Edad: <span class="datoH6">{{ registro.value.age }}</span></h6>
-                </div>
+              <div class="col-md-9 center-element col-data" style="justify-content: flex-start">
+                <h2>Nombre: <span class="dato">{{ user.full_name }}</span></h2>
               </div>
             </div>
           </div>
-          <div class="row">
-            <!-- Button -->
-            <div class="col-md-4">
-              <div class="row contaianer-button align-items-center">
-                <div class="col-md-12">
-                  <h6 style="text-align: center">Nivel de Cobertura</h6>
-                </div>
-                <div class="col-md-12">
-                  <button
-                    class="blue_btn"
-                    [ngClass]="{
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-1 center-element">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-map-big"></i>
+                </span>
+              </div>
+              <div class="col-md-8 center-element col-data" style="justify-content: flex-start">
+                <h2>Estado: <span class="dato">{{ user.state }}</span></h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-1 center-element">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-badge"></i>
+                </span>
+              </div>
+              <div class="col-md-5 center-element col-data" style="justify-content: flex-start">
+                <h2>Edad: <span class="dato">{{ user.age }}</span></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Button -->
+          <div class="col-md-4">
+            <div class="row contaianer-button align-items-center">
+              <div class="col-md-12">
+                <h4 style="text-align: center">Nivel de Cobertura</h4>
+              </div>
+              <div class="col-md-12">
+                <button class="blue_btn" [ngClass]="{
                       control_button_pressed: nivelCobertura.basico
-                    }"
-                    (click)="cambioCobertura('basico')"
-                  >
-                    BÁSICA
-                  </button>
-                </div>
-                <div class="col-md-12">
-                  <button
-                    class="blue_btn"
-                    [ngClass]="{
-                      control_button_pressed: nivelCobertura.estandar
-                    }"
-                    (click)="cambioCobertura('estandar')"
-                  >
-                    ESTÁNDAR
-                  </button>
-                </div>
-                <div class="col-md-12">
-                  <button
-                    class="blue_btn"
-                    [ngClass]="{
-                      control_button_pressed: nivelCobertura.premium
-                    }"
-                    (click)="cambioCobertura('premium')"
-                  >
-                    PREMIUM
-                  </button>
-                </div>
-                <div class="col-md-12">
-                  <button
-                    class="blue_btn"
-                    [ngClass]="{ control_button_pressed: nivelCobertura.todas }"
-                    (click)="cambioCobertura('todas')"
-                  >
-                    TODAS
-                  </button>
-                </div>
+                    }" (click)="cambioCobertura('basico')">
+                  BÁSICA
+                </button>
               </div>
-              <!-- <div class="row contaianer-button">
+              <div class="col-md-12">
+                <button class="blue_btn" [ngClass]="{
+                      control_button_pressed: nivelCobertura.estandar
+                    }" (click)="cambioCobertura('estandar')">
+                  ESTÁNDAR
+                </button>
+              </div>
+              <div class="col-md-12">
+                <button class="blue_btn" [ngClass]="{
+                      control_button_pressed: nivelCobertura.premium
+                    }" (click)="cambioCobertura('premium')">
+                  PREMIUM
+                </button>
+              </div>
+              <div class="col-md-12">
+                <button class="blue_btn" [ngClass]="{ control_button_pressed: nivelCobertura.todas }"
+                  (click)="cambioCobertura('todas')">
+                  TODAS
+                </button>
+              </div>
+            </div>
+            <!-- <div class="row contaianer-button">
                                 <div class="col-md-12">
                                     <h6>Forma de Pago</h6>
                                 </div>
@@ -227,58 +92,51 @@
                                     <button class="blue_btn" [ngClass]="{'control_button_pressed': formaPago.anual}" (click)="cambioFormaPago('anual')">ANUAL</button>
                                 </div>
                             </div> -->
-            </div>
-            <div class="col-md-8 col-sm-12">
-              <div class="container-items">
-                <ng-container *ngIf="itemFiltrado.length > 0">
-                  <div class="item" *ngFor="let item of itemFiltrado">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-3">
-                          <img
-                            class="logo_empresa"
-                            *ngIf="item.company === 'AXA'"
-                            src="assets/img/logo_axa.jpg"
-                          />
-                          <img
-                            class="logo_empresa"
-                            *ngIf="item.company === 'MAPFRE'"
-                            src="assets/img/logo_mapre.jpg"
-                          />
-                        </div>
-                        <div class="col-md-3">
-                          <h6>Precio</h6>
-                          <p>${{ item.price }} MXN</p>
-                        </div>
-                        <div class="col-md-3">
-                          <h6>Deducible</h6>
-                          <p>${{ item.deductible }} MXN</p>
-                        </div>
-                        <div class="col-md-3">
-                          <h6>Membresía</h6>
-                          <p>{{ item.membership }}</p>
-                        </div>
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <div class="container-items">
+              <ng-container *ngIf="itemFiltrado.length > 0">
+                <div class="item" *ngFor="let item of itemFiltrado">
+                  <div class="col-md-12 ">
+                    <div class="row">
+                      <div class="col-md-3 col-lg-6">
+                        <h5>Precio</h5>
+                        <p>${{ item.price }} MXN</p>
                       </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <!-- <h6 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h6> -->
-                        </div>
+                      <div class="col-md-3 col-lg-6">
+                        <h5>Deducible</h5>
+                        <p>${{ item.deductible }} MXN</p>
                       </div>
-                      <ng-container>
-                        <div class="container-see-more">
-                          <div class="row">
-                            <div class="col-md-3 colCenter">
-                              <h6>Hospitales incluidos</h6>
-                            </div>
-                            <div class="col-md-6">
-                              <ol>
-                                <li *ngFor="let hospital of item.hospitals">
-                                  {{ hospital }}
-                                </li>
-                              </ol>
-                            </div>
+                      <div class="col-md-3 col-lg-6">
+                        <h5>Membresía</h5>
+                        <p>{{ item.membership }}</p>
+                      </div>
+                      <div class="col-md-3 col-lg-6">
+                        <img class="logo_empresa" *ngIf="item.company === 'AXA'" src="assets/img/logo_axa.jpg" />
+                        <img class="logo_empresa" *ngIf="item.company === 'MAPFRE'" src="assets/img/logo_mapre.jpg" />
+                        <img class="logo_empresa" *ngIf="item.company === 'GNP'" src="assets/img/logo-gnp.jpeg" />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <!-- <h5 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h5> -->
+                      </div>
+                    </div>
+                    <ng-container>
+                      <div class="container-see-more">
+                        <div class="row">
+                          <div class="col-md-3 colCenter col-lg-6">
+                            <h5>Hospitales incluidos</h5>
                           </div>
-                          <!-- <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <ol>
+                              <li *ngFor="let hospital of item.hospitals">
+                                {{ hospital }}
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                        <!-- <div class="row">
                                                         <div class="col-md-3">
                                                             Cobertura incluidas
                                                         </div>
@@ -290,16 +148,15 @@
                                                             </ol>
                                                         </div>
                                                     </div> -->
-                        </div>
-                      </ng-container>
-                    </div>
+                      </div>
+                    </ng-container>
                   </div>
-                </ng-container>
-              </div>
+                </div>
+              </ng-container>
             </div>
           </div>
-        </form>
-      </div>
-    </ng-template>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

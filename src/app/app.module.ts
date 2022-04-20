@@ -11,8 +11,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { ComponentsModule } from './components/components.module';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,9 @@ import { ComponentsModule } from './components/components.module';
     RouterModule,
     ComponentsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

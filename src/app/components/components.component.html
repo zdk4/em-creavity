@@ -1,91 +1,77 @@
 <div class="wrapper">
     <div class="page-header section-dark" style="background-image: url('assets/img/comparagastosmedicos.png');
     background-position: center; background-repeat: no-repeat;background-size: cover;background-attachment:fixed;">
-        <div class="content-center">
+        <div class="content-center cotainer-register-form">
             <div class="container">
                 <form class="register-form" [formGroup]="registro">
-                    <!-- Nombre -->
-                    <div class="input-group form-group-no-border">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Nombre"
-                        formControlName="full_name"
-                        [ngClass]="{ error: registro.controls.full_name.invalid }"
-                      />
-                    </div>
-                    <!-- Edad -->
-                    <div class="input-group form-group-no-border">
-                      <input
-                        type="number"
-                        class="form-control"
-                        placeholder="Edad"
-                        formControlName="age"
-                        [ngClass]="{ error: registro.controls.age.invalid }"
-                        (keypress)="isInputNumber($event)"
-                        min="0"
-                        max="65"
-                      />
-                      <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Nombre -->
+                            <div>
+                                <input type="text" class="form-control" placeholder="Nombre" formControlName="full_name"
+                                    [ngClass]="{ error: registro.controls.full_name.invalid }" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Edad -->
+                            <div>
+                                <input type="number" class="form-control" placeholder="Edad" formControlName="age"
+                                    [ngClass]="{ error: registro.controls.age.invalid }"
+                                    (keypress)="isInputNumber($event)" min="0" max="65" />
+                                <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
                                       <p >Edad máxima 65 años</p>
                                   </div> -->
+                            </div>
+                        </div>
                     </div>
-                    <!-- Estado-->
-                    <div class="input-group form-group-no-border">
-                      <select
-                        name=""
-                        class="form-control"
-                        formControlName="state"
-                        [ngClass]="{ error: registro.controls.state.invalid }"
-                      >
-                        <option value="">Estado</option>
-                        <option value="{{ item.nombre }}" *ngFor="let item of estados">
-                          {{ item.nombre }}
-                        </option>
-                      </select>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Estado-->
+                            <div>
+                                <select name="" class="form-control" formControlName="state"
+                                    [ngClass]="{ error: registro.controls.state.invalid }">
+                                    <option value="">Estado</option>
+                                    <option value="{{ item.nombre }}" *ngFor="let item of estados">
+                                        {{ item.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Sexo-->
+                            <div>
+                                <select name="" class="form-control" formControlName="gender"
+                                    [ngClass]="{ error: registro.controls.gender.invalid }">
+                                    <option value="">Sexo</option>
+                                    <option value="H">Masculino</option>
+                                    <option value="M">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Sexo-->
-                    <div class="input-group form-group-no-border">
-                      <select
-                        name=""
-                        class="form-control"
-                        formControlName="gender"
-                        [ngClass]="{ error: registro.controls.gender.invalid }"
-                      >
-                        <option value="">Sexo</option>
-                        <option value="H">Masculino</option>
-                        <option value="M">Femenino</option>
-                      </select>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- MAIL-->
+                            <div>
+                                <input type="text" [ngClass]="{ error: registro.controls.email.invalid }"
+                                    class="form-control" placeholder="Email" formControlName="email" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- TELEFONO -->
+                            <div>
+                                <input type="text" [ngClass]="{ error: registro.controls.phone.invalid }"
+                                    class="form-control" placeholder="Telefóno" formControlName="phone"
+                                    (keypress)="isInputNumber($event)" />
+                            </div>
+                        </div>
                     </div>
-                    <!-- MAIL-->
-                    <div class="input-group form-group-no-border">          
-                      <input
-                        type="text"
-                        [ngClass]="{ error: registro.controls.email.invalid }"
-                        class="form-control"
-                        placeholder="Email"
-                        formControlName="email"
-                      />
+                    <div class="contaier-button">
+                        <button class="btn btn-round btn-cotizar" [disabled]="registro.invalid" (click)="sendUser()">
+                            COTIZAR GRATIS
+                        </button>
                     </div>
-                    <!-- TELEFONO -->
-                    <div class="input-group form-group-no-border">
-                      <input
-                        type="text"
-                        [ngClass]="{ error: registro.controls.phone.invalid }"
-                        class="form-control"
-                        placeholder="Telefóno"
-                        formControlName="phone"
-                        (keypress)="isInputNumber($event)"
-                      />
-                    </div>
-                    <button
-                      class="btn btn-block btn-round"
-                      [disabled]="registro.invalid"
-                      (click)="sendUser()"
-                    >
-                      COTIZAR GRATIS
-                    </button>
-                  </form>
+                </form>
             </div>
         </div>
     </div>
@@ -213,11 +199,11 @@
                 </div>
             </div>
         </section>
- <!--=========================================Testimonios=========================================================-->
+        <!--=========================================Testimonios=========================================================-->
         <div id="precios" class="section javascript-components"
-        style="background-image: url('assets/img/comparagastosmedicos8.png');background-size:cover;background-attachment:fixed;">
+            style="background-image: url('assets/img/comparagastosmedicos8.png');background-size:cover;background-attachment:fixed;">
             <div class="container">
-                 <div class="sow-testimonials">
+                <div class="sow-testimonials">
                     <div class="flexslider testimonials-wrapper text-center graytext">
                         <ul class="slides">
                             <li>
@@ -251,14 +237,13 @@
                     <h3>
                         ¡Llámanos ya! 000-000-0000
                     </h3>
-    
+
                 </div>
             </div>
         </div>
-         <!--=========================================Logo=========================================================-->
-         <section class="margintop60 nopadding">
-            <div class="container text-center"><img src="assets/img/Logo_comparagastosmedicos.png"
-                style="width: 40%;"
+        <!--=========================================Logo=========================================================-->
+        <section class="margintop60 nopadding">
+            <div class="container text-center"><img src="assets/img/Logo_comparagastosmedicos.png" style="width: 40%;"
                     alt="Cotiza, compara y contrata" class="img-responsive"></div>
         </section>
-</div>
+    </div>

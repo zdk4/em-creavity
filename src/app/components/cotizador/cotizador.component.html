@@ -11,7 +11,7 @@
                 </span>
               </div>
               <div class="col-md-9 center-element col-data" style="justify-content: flex-start">
-                <h2>Nombre: <span class="dato">{{ user.full_name }}</span></h2>
+                <h2 class="weight-bold">Nombre: <span class="dato">{{ user.full_name }}</span></h2>
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@
                 </span>
               </div>
               <div class="col-md-8 center-element col-data" style="justify-content: flex-start">
-                <h2>Estado: <span class="dato">{{ user.state }}</span></h2>
+                <h2 class="weight-bold">Estado: <span class="dato">{{ user.state }}</span></h2>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
                 </span>
               </div>
               <div class="col-md-5 center-element col-data" style="justify-content: flex-start">
-                <h2>Edad: <span class="dato">{{ user.age }}</span></h2>
+                <h2 class="weight-bold">Edad: <span class="dato">{{ user.age }}</span></h2>
               </div>
             </div>
           </div>
@@ -99,22 +99,22 @@
                 <div class="item" *ngFor="let item of itemFiltrado">
                   <div class="col-md-12 ">
                     <div class="row">
-                      <div class="col-md-3 col-lg-6">
-                        <h5>Precio</h5>
+                      <div class="col-md-3">
+                        <h5 class="weight-bold">Precio</h5>
                         <p>${{ item.price }} MXN</p>
                       </div>
-                      <div class="col-md-3 col-lg-6">
-                        <h5>Deducible</h5>
+                      <div class="col-md-3">
+                        <h5 class="weight-bold">Deducible</h5>
                         <p>${{ item.deductible }} MXN</p>
                       </div>
-                      <div class="col-md-3 col-lg-6">
-                        <h5>Membresía</h5>
+                      <div class="col-md-3">
+                        <h5 class="weight-bold">Membresía</h5>
                         <p>{{ item.membership }}</p>
                       </div>
-                      <div class="col-md-3 col-lg-6">
+                      <div class="col-md-3">
                         <img class="logo_empresa" *ngIf="item.company === 'AXA'" src="assets/img/logo_axa.jpg" />
                         <img class="logo_empresa" *ngIf="item.company === 'MAPFRE'" src="assets/img/logo_mapre.jpg" />
-                        <img class="logo_empresa" *ngIf="item.company === 'GNP'" src="assets/img/logo-gnp.jpeg" />
+                        <img class="logo_empresa" *ngIf="item.company === 'GNP'" src="assets/img/logo-gnp.jpg" />
                       </div>
                     </div>
                     <div class="row">
@@ -125,10 +125,10 @@
                     <ng-container>
                       <div class="container-see-more">
                         <div class="row">
-                          <div class="col-md-3 colCenter col-lg-6">
-                            <h5>Hospitales incluidos</h5>
+                          <div class="col-md-3 colCenter">
+                            <h5 class="weight-bold">Hospitales incluidos</h5>
                           </div>
-                          <div class="col-md-6 col-lg-6">
+                          <div class="col-md-6">
                             <ol>
                               <li *ngFor="let hospital of item.hospitals">
                                 {{ hospital }}

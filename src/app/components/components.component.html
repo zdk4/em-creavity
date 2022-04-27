@@ -6,63 +6,74 @@
                 <form class="register-form" [formGroup]="registro">
                     <div class="row">
                         <div class="col-lg-6">
-                            <!-- Nombre -->
-                            <div>
-                                <input type="text" class="form-control" placeholder="Nombre" formControlName="full_name"
-                                    [ngClass]="{ error: registro.controls.full_name.invalid }" />
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- Nombre -->
+                                    <input type="text" class="form-control" placeholder="Nombre"
+                                        formControlName="full_name"
+                                        [ngClass]="{ error: registro.controls.full_name.invalid }" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Edad -->
-                            <div>
-                                <input type="number" class="form-control" placeholder="Edad" formControlName="age"
-                                    [ngClass]="{ error: registro.controls.age.invalid }"
-                                    (keypress)="isInputNumber($event)" min="0" max="65" />
-                                <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- Edad -->
+                                    <input type="number" class="form-control" placeholder="Edad" formControlName="age"
+                                        [ngClass]="{ error: registro.controls.age.invalid }"
+                                        (keypress)="isInputNumber($event)" min="0" max="65" />
+                                    <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
                                       <p >Edad máxima 65 años</p>
                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- Estado-->
+                                    <select name="" class="form-control" formControlName="state"
+                                        [ngClass]="{ error: registro.controls.state.invalid }">
+                                        <option value="">Estado</option>
+                                        <option value="{{ item.nombre }}" *ngFor="let item of estados">
+                                            {{ item.nombre }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- Sexo-->
+                                    <select name="" class="form-control" formControlName="gender"
+                                        [ngClass]="{ error: registro.controls.gender.invalid }">
+                                        <option value="">Sexo</option>
+                                        <option value="H">Masculino</option>
+                                        <option value="M">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- MAIL-->
+                                    <input type="text" [ngClass]="{ error: registro.controls.email.invalid }"
+                                        class="form-control" placeholder="Email" formControlName="email" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- TELEFONO -->
+                                    <input type="text" [ngClass]="{ error: registro.controls.phone.invalid }"
+                                        class="form-control" placeholder="Telefóno" formControlName="phone"
+                                        (keypress)="isInputNumber($event)" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
-                            <!-- Estado-->
-                            <div>
-                                <select name="" class="form-control" formControlName="state"
-                                    [ngClass]="{ error: registro.controls.state.invalid }">
-                                    <option value="">Estado</option>
-                                    <option value="{{ item.nombre }}" *ngFor="let item of estados">
-                                        {{ item.nombre }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- Sexo-->
-                            <div>
-                                <select name="" class="form-control" formControlName="gender"
-                                    [ngClass]="{ error: registro.controls.gender.invalid }">
-                                    <option value="">Sexo</option>
-                                    <option value="H">Masculino</option>
-                                    <option value="M">Femenino</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <!-- MAIL-->
-                            <div>
-                                <input type="text" [ngClass]="{ error: registro.controls.email.invalid }"
-                                    class="form-control" placeholder="Email" formControlName="email" />
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <!-- TELEFONO -->
-                            <div>
-                                <input type="text" [ngClass]="{ error: registro.controls.phone.invalid }"
-                                    class="form-control" placeholder="Telefóno" formControlName="phone"
-                                    (keypress)="isInputNumber($event)" />
+                            <div class="row">
+                                <div class="col-lg-4"> 
+                                    <img class="logo_empresa"  src="assets/img/logo_axa.jpg" /></div>
+                                <div class="col-lg-4">
+                                    <img class="logo_empresa"  src="assets/img/logo_mapre.jpg" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <img class="logo_empresa" src="assets/img/logo-gnp.jpg" />
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -134,6 +134,15 @@ p {
   }
 }
 
+@media (min-width:1120px) {
+  .card-cotizador {
+    max-height: 720px;
+    height: 740px;
+    .container-items {
+      max-height: 580px;
+    }
+  }
+}
 .error {
   border: 1px solid red !important;
 }

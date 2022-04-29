@@ -14,6 +14,7 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +30,9 @@ import {MatInputModule} from '@angular/material/input';
     ComponentsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatInputModule,
     MatFormFieldModule,
-    MatInputModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

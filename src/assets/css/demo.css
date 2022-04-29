@@ -1792,3 +1792,12 @@ pre.prettyprint {
 	}
 
 }
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff!important;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+

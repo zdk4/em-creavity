@@ -9,7 +9,9 @@ import { RouterModule } from '@angular/router';
 
 import { ComponentsComponent } from './components.component';
 import { CotizadorComponent } from './cotizador/cotizador.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
     imports: [
         CommonModule,
@@ -18,7 +20,10 @@ import { CotizadorComponent } from './cotizador/cotizador.component';
         NouisliderModule,
         RouterModule,
         JwBootstrapSwitchNg2Module,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule
     ],
     declarations: [
         ComponentsComponent,

@@ -236,6 +236,21 @@
     .presentation-title{
         font-size: 5em;
     }
+
+    .page-header {
+        .content-center {
+            margin-top: 168px;
+            .logo_empresa {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 780px){
+    .logo_empresa {
+        width: 50%;
+    }
 }
 
 .cotainer-register-form {
@@ -246,7 +261,7 @@
     box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
     width: 85%;
     margin: 35px;
-    padding: 12px;
+    padding: 40px 12px;
 }
 
 .contaier-button {

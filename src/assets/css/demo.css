@@ -1795,9 +1795,15 @@ pre.prettyprint {
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: #fff!important;
+    border-radius: 30px;
+    border: solid 1px rgb(120 112 112);
 }
 
+
+mat-label {
+    color: black;
+}
 .mat-form-field {
     width: 100%;
+    border-radius: 11px;
 }
-

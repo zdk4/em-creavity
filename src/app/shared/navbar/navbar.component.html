@@ -5,11 +5,11 @@
             <a class="navbar-brand"  [routerLink]="['/home']">
                 <img src="assets/img/logo_seguros_rodas.png" alt="logo seguros">
             </a>
-            <button *ngIf="!isCotizador()" class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <!-- <button *ngIf="!isCotizador()" class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
-            </button>
+            </button> -->
         </div>
         <div *ngIf="!isCotizador()" class="navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">

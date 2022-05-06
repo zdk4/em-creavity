@@ -503,3 +503,11 @@
 .navbar-hidden{
     display: none;
 }
+
+@media (max-width: 500px){
+    .navbar-brand {
+        img {
+            max-width: 366px;
+        }
+    }
+}

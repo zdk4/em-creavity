@@ -4,14 +4,14 @@
         <div class="content-center cotainer-register-form">
             <div class="container">
                 <form class="register-form" [formGroup]="registro">
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="row row-container">
+                        <div class="col-lg-12 container-form">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <!-- Nombre -->
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Nombre</mat-label>
-                                        <input matInput  formControlName="full_name"
+                                        <input matInput formControlName="full_name"
                                             [ngClass]="{ error: registro.controls.full_name.invalid }">
                                     </mat-form-field>
                                 </div>
@@ -21,13 +21,13 @@
                                     <!-- Edad -->
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Edad</mat-label>
-                                        <input matInput type="number" placeholder="Edad máxima 65 años" formControlName="age"
-                                            [ngClass]="{ error: registro.controls.age.invalid }"
+                                        <input matInput type="number" placeholder="Edad máxima 65 años"
+                                            formControlName="age" [ngClass]="{ error: registro.controls.age.invalid }"
                                             (keypress)="isInputNumber($event)" min="0" max="65">
                                     </mat-form-field>
                                     <!-- <div [ngClass]="{'error': registro.controls.age.invalid }">
-                                      <p >Edad máxima 65 años</p>
-                                  </div> -->
+                                          <p >Edad máxima 65 años</p>
+                                      </div> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -49,11 +49,11 @@
                                     <mat-form-field appearance="fill">
                                         <mat-label>Sexo</mat-label>
                                         <mat-select formControlName="gender"
-                                        [ngClass]="{ error: registro.controls.gender.invalid }">
-                                          <mat-option value="H">Masculino</mat-option>
-                                          <mat-option value="M">Femenino</mat-option>
+                                            [ngClass]="{ error: registro.controls.gender.invalid }">
+                                            <mat-option value="H">Masculino</mat-option>
+                                            <mat-option value="M">Femenino</mat-option>
                                         </mat-select>
-                                      </mat-form-field>
+                                    </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
@@ -73,32 +73,51 @@
                                     <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Telefóno</mat-label>
                                         <input matInput placeholder="" formControlName="phone"
-                                        (keypress)="isInputNumber($event)"
-                                        [ngClass]="{ error: registro.controls.phone.invalid }">
+                                            (keypress)="isInputNumber($event)"
+                                            [ngClass]="{ error: registro.controls.phone.invalid }">
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 d-flex align-items-center">
                             <div class="row">
-                                <div class="col-sm-4 col-lg-4 d-flex align-items-center justify-content-center">
-                                    <img class="logo_empresa" src="assets/img/logo_mapre.jpg" />
-                                </div>
-                                <div class="col-sm-4 col-lg-4 d-flex align-items-center justify-content-center">
-                                    <img class="logo_empresa" src="assets/img/logo_axa.jpg" />
-                                </div>
-                                <div class="col-sm-4 col-lg-4 d-flex align-items-center justify-content-center">
-                                    <img class="logo_empresa" src="assets/img/logo-gnp.jpg" />
+                                <div class="col-lg-12">
+                                    <div class="contaier-button">
+                                        <button class="btn btn-round btn-cotizar" [disabled]="registro.invalid"
+                                            (click)="sendUser()">
+                                            COTIZAR GRATIS
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="contaier-button">
-                        <button class="btn btn-round btn-cotizar" [disabled]="registro.invalid" (click)="sendUser()">
-                            COTIZAR GRATIS
-                        </button>
-                    </div>
                 </form>
+                <div class="row">
+                    <div class="col-lg-12 d-flex align-items-center justify-content-center">
+                        <h1 style="text-align: center;
+                        line-height: 1.3;
+                        font-size: 34px;
+                        letter-spacing: 1px;
+                        color: #000000;">Cotiza entre las mejores aseguradoras</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-lg-3 d-flex align-items-center justify-content-center">
+                        <img class="logo_empresa"
+                            src="https://comparador.kayum.mx/salud/includes/images/aseguradoras/GNP.svg" />
+                    </div>
+                    <div class="col-6 col-lg-3 d-flex align-items-center justify-content-center">
+                        <img class="logo_empresa"
+                            src="https://comparador.kayum.mx/salud/includes/images/aseguradoras/BXMAS.svg" />
+                    </div>
+                    <div class="col-6 col-lg-3 d-flex align-items-center justify-content-center">
+                        <img class="logo_empresa"
+                            src="https://comparador.kayum.mx/salud/includes/images/aseguradoras/MAPFRE.svg" />
+                    </div>
+                    <div class="col-6 col-lg-3 d-flex align-items-center justify-content-center">
+                        <img class="logo_empresa"
+                            src="https://comparador.kayum.mx/salud/includes/images/aseguradoras/AXA.svg" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -120,7 +139,7 @@
         </section>
         <!-- Imagenes -->
         <section class="panel-grid">
-            <div class="row container-boxes" style=" margin-right: 0; margin-left: 0;">
+            <div class="nopadding row">
                 <div class="col-md-4" style="background:#141414;">
                     <div class="team-boxes">
                         <div class="team-thumb overlay-image view-overlay">
@@ -130,16 +149,14 @@
                             <div class="mask team_quote">
                                 <div class="port-zoom-link">
                                     <p>
-                                        Descripción de la cobertura
+                                        Si buscas proteger a tu familia ante una enfermedad o accidente, tenemos los
+                                        mejores planes a costos accesibles. Comienza ya a proteger a tus seres queridos
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="team-info">
                             <h2>BÁSICO</h2>
-                            <p>
-                                Subtitulo
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -153,16 +170,15 @@
                             <div class="mask team_quote">
                                 <div class="port-zoom-link">
                                     <p>
-                                        Descripción de la cobertura
+                                        El seguro de gastos médicos con acceso a Hospitales de gama media y con
+                                        beneficios que te daran la tranquilidad que tu y tu familia estan protegidos
+                                        contra una enfermedad o accidente.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="team-info">
                             <h2>ESTÁNDAR</h2>
-                            <p>
-                                Subtitulo
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -176,28 +192,38 @@
                             <div class="mask team_quote">
                                 <div class="port-zoom-link">
                                     <p>
-                                        Subtitulo
+                                        Si buscas la mejor atención médica para ti y tu familia. Tenemos el plan que
+                                        necesitas. Acceso a los mejores hospitales privados de México y los mejores
+                                        médicos del país.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="team-info">
                             <h2>PREMIUN</h2>
-                            <p>
-                                Subtitulo
-                            </p>
+
                         </div>
 
                     </div>
                 </div>
+                <div class="clearfix"></div>
             </div>
         </section>
+
+
+
+
+
+
+
+
+
 
         <!--================================================ Planes================================================== -->
         <section id="planes" class="services margintop60">
             <div class="container">
                 <div class="sow-headline">
-                    <h1><b>NUESTROS PLANES</b></h1>
+                    <h1><b>¿Que debo saber para contratar un Seguro de Gastos Médicos?</b></h1>
                     <div class="decoration">
                         <div class="decoration-inside">
                         </div>
@@ -205,23 +231,33 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="tim-title">01.Básico</h3>
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate
-                        B2C users after installed base benefits. Dramatically visualize customer directed convergence
-                        without revolutionary ROI.
-                        <h3>02.Estándar</h3>
-                        Completely synergize resource taxing relationships via premier niche markets. Professionally
-                        cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling
-                        customer service for state of the art customer service.
+                        <h3 class="tim-title">Plan</h3>
+                        Debes saber a que nivel de Hospital puedes acceder, por lo general existen tres niveles de
+                        Hospitales, pregunta a cuales tienes acceso para evitar pago de diferencia.
+
+                        <h3>Tabulador</h3>
+                        Son los honorarios médicos que le pagan a los doctores por consultas, tratamientos o cirugías.
+                        Saber que tabulador estas contratando te evitará llevarte sorpresas de pago de diferencias en
+                        honorarios al momento de usar tu póliza.
+
+                        <h3>Deducible</h3>
+                        El deducible es el primer gastos que debe curbir el asegurado para que su póliza empiece a
+                        funcionar. Puedes bajar el costo de tu póliza si contratas un deducible alto. ¿Como tomar la
+                        decision de tu deducible? Revisa el limite de tu credito o bien los ahorros que tengas para pago
+                        de contingencias.
                     </div>
                     <div class="col-md-6">
-                        <h3 class="tim-title">03.Premium</h3>
-                        Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                        procrastinate
-                        B2C users after installed base benefits. Dramatically visualize customer directed convergence
-                        without revolutionary ROI.
+                        <h3 class="tim-title">Coaseguro</h3>
+                        Es el porcentaje de participación que tendra el asegurado despues del deducible, este por lo
+                        general es del 10%.
 
+                        <h3>Periodos de Espera</h3>
+                        Todas las pólizas tienen periodos de espera en ciertos padecimientos, es, decir, se cubriran
+                        despues de que pase un tiempo. Siempre debes tenerlos presentes.
+
+                        <h3>Exclusiones</h3>
+                        Son muy parecidas en todas las pólizas, la mas comun es, padecimientos preexistentes que no se
+                        cubren.
                     </div>
                 </div>
             </div>
@@ -261,9 +297,9 @@
                 </div>
                 <br />
                 <div class="w960 text-center">
-                    <h3>
+                    <!-- <h3>
                         ¡Llámanos ya! 000-000-0000
-                    </h3>
+                    </h3> -->
 
                 </div>
             </div>

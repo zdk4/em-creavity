@@ -1,7 +1,7 @@
 <div class="container-cotizador">
   <div class="row">
-    <div class="card card-cotizador">
-      <form class="register-form">
+    <div class=" card-cotizador">
+      <form class="register-form-cotizador">
         <div class="row" style="margin-bottom: 27px">
           <div class="col-md-4">
             <div class="row">
@@ -10,7 +10,7 @@
                   <i class="nc-icon nc-single-copy-04"></i>
                 </span>
               </div>
-              6<div class="col-10  col-md-9 center-element col-data" style="justify-content: flex-start">
+              <div class="col-10  col-md-9 center-element col-data" style="justify-content: flex-start">
                 <h2 class="weight-bold">Nombre: <span class="dato">{{ user.full_name }}</span></h2>
               </div>
             </div>
@@ -99,42 +99,48 @@
                 <div class="item" *ngFor="let item of itemFiltrado">
                   <div class="col-md-12 ">
                     <div class="row">
-                      <div class="col-md-3">
-                        <h5 class="weight-bold">Precio</h5>
-                        <p>${{ item.price }} MXN</p>
-                      </div>
-                      <div class="col-md-3">
-                        <h5 class="weight-bold">Deducible</h5>
-                        <p>${{ item.deductible }} MXN</p>
-                      </div>
-                      <div class="col-md-3">
-                        <h5 class="weight-bold">Membresía</h5>
-                        <p>{{ item.membership }}</p>
-                      </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                         <img class="logo_empresa" *ngIf="item.company === 'AXA'" src="assets/img/logo_axa.jpg" />
                         <img class="logo_empresa" *ngIf="item.company === 'MAPFRE'" src="assets/img/logo_mapre.jpg" />
                         <img class="logo_empresa" *ngIf="item.company === 'GNP'" src="assets/img/logo-gnp.jpg" />
                       </div>
+                      <div class="col-md-4">
+                        <h5 class="weight-bold">Precio</h5>
+                        <p>${{ item.price }} MXN</p>
+                      </div>
+                      <div class="col-md-4">
+                        <h5 class="weight-bold">Membresía</h5>
+                        <p>{{ item.membership }}</p>
+                      </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-3">
+                        <h5 class="weight-bold">Deducible</h5>
+                        <p>${{ item.deductible }} MXN</p>
+                      </div>
+                      <div class="col-md-6">
+                        <h5 class="weight-bold">Hospitales incluidos</h5>
+                        <ol>
+                          <li *ngFor="let hospital of item.hospitals">
+                            {{ hospital }}
+                          </li>
+                        </ol>
+                      </div>
+                      <div class="col-md-3">
+                       <a href="https://api.whatsapp.com/send?phone=525516483883">
+                        <button type="button" class="btn btn-success">Me interesa</button>
+                       </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
                         <!-- <h5 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h5> -->
                       </div>
                     </div>
                     <ng-container>
                       <div class="container-see-more">
                         <div class="row">
-                          <div class="col-md-3 colCenter">
-                            <h5 class="weight-bold">Hospitales incluidos</h5>
-                          </div>
-                          <div class="col-md-6">
-                            <ol>
-                              <li *ngFor="let hospital of item.hospitals">
-                                {{ hospital }}
-                              </li>
-                            </ol>
-                          </div>
+                         
                         </div>
                         <!-- <div class="row">
                                                         <div class="col-md-3">

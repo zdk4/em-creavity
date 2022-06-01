@@ -250,15 +250,19 @@
 @media (max-width: 780px){
     .logo_empresa {
         width: 50%;
-    }
+    }    
 }
-
+.logo_empresa {
+    max-height: 55px;
+    margin: 10px 2px;
+    width: 100%;
+}
 .cotainer-register-form {
-    background-color: #FFF;
+    background-color: #ffffff00;
     border-radius: 16px;
-    -webkit-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+    // -webkit-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+    // -moz-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+    // box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
     width: 85%;
     margin: 35px;
     padding: 40px 12px;
@@ -268,4 +272,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container-form {
+    // background-color: #fff;
+    padding: 16px;
+    // border-radius: 16px;
+    // -webkit-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+    // -moz-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+    // box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+}
+
+.register-form {
+    justify-content: center;
+    display: flex;
+    .row-container {
+        width: 45%;
+    }
 }

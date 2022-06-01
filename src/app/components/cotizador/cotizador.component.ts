@@ -12,7 +12,7 @@ export class CotizadorComponent implements OnInit {
   constructor(private cotizadorService: CotizadorServiceService) { }
   public mostrarMasInformacion = false;
   public nivelCobertura = {
-    basico: false,
+    basico: true,
     estandar: false,
     premium: false,
     todas: false,
@@ -63,9 +63,11 @@ export class CotizadorComponent implements OnInit {
     this.cotizadorService.getCotizaciones(this.user).toPromise().then(arg => {
       this.precios = arg.data
       this.precios.forEach(element => {
+        console.log(element);
         element.hospitals = element.hospitals.split(',');
         // element.price = Number(element.price),
         // element.deductible = Number(element.deductible)
+        this.cambioCobertura('basico');
       });
     });
   }

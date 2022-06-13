@@ -12,6 +12,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@angular/animations": "11.0.4",
     "@angular/cdk": "^11.2.13",
     "@angular/common": "11.0.4",
@@ -26,15 +27,20 @@
     "@angular/router": "11.0.4",
     "@ng-bootstrap/ng-bootstrap": "6.0.0",
     "@popperjs/core": "^2.11.2",
+    "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "bootstrap": "^4.5.3",
     "core-js": "3.8.1",
+    "http": "^0.0.1-security",
     "jquery": "^3.5.1",
+    "js": "^0.1.0",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "ng2-nouislider": "1.8.2",
     "nouislider": "14.6.3",
+    "parser": "^0.1.4",
     "popper.js": "1.16.1",
     "rxjs": "6.6.3",
     "rxjs-compat": "6.6.3",
+    "sweetalert2": "^11.4.17",
     "zone.js": "0.11.3"
   },
   "devDependencies": {

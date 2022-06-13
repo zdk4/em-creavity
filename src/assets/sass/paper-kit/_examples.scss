@@ -245,14 +245,28 @@
             }
         }
     }
+
+    
 }
 
 @media (max-width: 780px){
     .logo_empresa {
         width: 50%;
     }    
+    .register-form {
+        .row-container {
+            width: 100%!important;
+        }
+    }
+    .btn-cotizar {
+        width: 55%;
+    }
+
+    .logo_empresa-components {
+        width: 100%;
+    }
 }
-.logo_empresa {
+.logo_empresa, .logo_empresa-components {
     max-height: 55px;
     margin: 10px 2px;
     width: 100%;

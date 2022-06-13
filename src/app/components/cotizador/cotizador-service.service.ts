@@ -18,8 +18,6 @@ export class CotizadorServiceService {
   constructor(private http: HttpClient) { }
 
   public getCotizaciones(body: FormGroup): Observable<any> {
-    console.log(body);
-    console.log(this._urlPrice);
     return this.http.post<any>(this._urlPrice, body, this.httpOptions)
     .pipe(
       catchError(this.handleError)

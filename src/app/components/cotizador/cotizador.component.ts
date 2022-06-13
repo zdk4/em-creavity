@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { CotizadorServiceService } from './cotizador-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cotizador',
@@ -29,7 +30,11 @@ export class CotizadorComponent implements OnInit {
   public user = null;
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.user);
-    this.getCotizaciones();
+    if (this.user.state === 'CIUDAD DE MEXICO' || this.user.state === 'ESTADO DE MEXICO') {
+      this.getCotizaciones();
+    } else {
+      this.getAlert();
+    }
   }
 
   cambioCobertura(cobertura: string) {
@@ -63,12 +68,20 @@ export class CotizadorComponent implements OnInit {
     this.cotizadorService.getCotizaciones(this.user).toPromise().then(arg => {
       this.precios = arg.data
       this.precios.forEach(element => {
-        console.log(element);
         element.hospitals = element.hospitals.split(',');
         // element.price = Number(element.price),
         // element.deductible = Number(element.deductible)
         this.cambioCobertura('basico');
       });
     });
+  }
+
+  getAlert() {
+    const message = 'Por el momento solo tenemos tarifa en CDMX y Edo. Mexico. En breve un ejecutivo se pondrá en contacto con usted para hacerle llegar las cotizaciones';
+    Swal.fire(
+      '',
+      message,
+      'warning'
+    )
   }
 }

@@ -96,7 +96,7 @@
           <div class="col-md-8 col-sm-12">
             <div class="container-items">
               <ng-container *ngIf="itemFiltrado.length > 0">
-                <div class="item" *ngFor="let item of itemFiltrado">
+                <div class="item" *ngFor="let item of itemFiltrado; let i = index">
                   <div class="col-md-12 ">
                     <div class="row">
                       <div class="col-md-4">
@@ -127,33 +127,42 @@
                         </ol>
                       </div>
                       <div class="col-md-3">
-                       <a href="https://api.whatsapp.com/send?phone=525516483883">
-                        <button type="button" class="btn btn-success">Me interesa</button>
-                       </a>
+                        <a href="https://api.whatsapp.com/send?phone=525516483883">
+                          <button type="button" class="btn btn-success">Me interesa</button>
+                        </a>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-3">
-                        <!-- <h5 class="see-more" (click)="mostrarMasInformacion = !mostrarMasInformacion">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h5> -->
+                        <h5 class="see-more" (click)="verCoberturas(i)">Ver</h5>
+                        <!-- <h5 class="see-more" (click)="verCoberturas(i)">{{!mostrarMasInformacion ? 'Ver más' : 'Ver menos' }}</h5> -->
                       </div>
                     </div>
                     <ng-container>
-                      <div class="container-see-more">
+                      <div id="see-more-{{i}}" class="hide-content">
                         <div class="row">
-                         
+                          <div class="col-md-12 cobertura-incluida">
+                            <h1>Cobertura incluidas</h1>
+                          </div>
                         </div>
-                        <!-- <div class="row">
-                                                        <div class="col-md-3">
-                                                            Cobertura incluidas
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <ol>
-                                                                <li>Gastos hospitalarios</li>
-                                                                <li>Honorarios médicos</li>
-                                                                <li>Analisis de laboratorio</li>
-                                                            </ol>
-                                                        </div>
-                                                    </div> -->
+                        <div class="row">
+                          <div class="col-md-12 lista-coberturas">
+                            <ol>
+                              <li><span>Ambulancia:</span> {{item.ambulance}}</li>
+                              <li><span>Suma asegurada:</span>  {{item.assured_amount}}</li>
+                              <li><span>Coseguro:</span>  {{item.coinsurance}}</li>
+                              <li><span>Dental:</span>  {{item.dental}}</li>
+                              <li><span>Auxiliar de diagnostico:</span>  {{item.diagnostic_auxiliaries}}</li>
+                              <li><span>Enfermedade frecuentes:</span>  {{item.frequently_diseases}}</li>
+                              <li><span>Gastos hospitalarios:</span>  {{item.hospitalary_expenses}}</li>
+                              <li><span>Honorarios Médicos:</span>  {{item.medical_fees}}</li>
+                              <li><span>Asistencia telefónica:</span>  {{item.phone_assistance}}</li>
+                              <li><span>Asistencia en viaje:</span>  {{item.travel_assistance}}</li>
+                              <li><span>Coseguro límite superior:</span>  {{item.upper_bound_coinsurance}}</li>
+                              <li><span>Visión:</span>  {{item.vision}}</li>
+                            </ol>
+                          </div>
+                        </div>
                       </div>
                     </ng-container>
                   </div>

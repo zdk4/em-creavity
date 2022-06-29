@@ -84,4 +84,14 @@ export class CotizadorComponent implements OnInit {
       'warning'
     )
   }
+
+  verCoberturas(index) {
+    const item = document.getElementById("see-more-" + index);
+    if (item.className === 'hide-content') {
+      item.className = "show-content";
+    } else {
+      item.className = "hide-content";
+    }
+    // mostrarMasInformacion = !mostrarMasInformacion
+  }
 }

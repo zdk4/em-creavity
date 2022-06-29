@@ -188,3 +188,27 @@ h2{
 h4 {
   color: #6b6666;
 }
+
+.cobertura-incluida {
+  h1 {
+    text-align: center;
+    color: green;
+  }
+}
+
+.lista-coberturas {
+  li {
+    font-weight: lighter;
+  }
+  span {
+    font-weight: bold;
+  }
+}
+
+.hide-content {
+  display: none;
+}
+
+.show-content {
+  display: block;
+}
